@@ -1,0 +1,166 @@
+-- phpMyAdmin SQL Dump
+-- version 4.9.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 27 Jul 2021 pada 14.58
+-- Versi server: 10.4.8-MariaDB
+-- Versi PHP: 7.3.11
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `halodb`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `dt_keluhan`
+--
+
+CREATE TABLE `dt_keluhan` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(150) DEFAULT NULL,
+  `keluhan` text DEFAULT NULL,
+  `fakultas` varchar(50) DEFAULT NULL,
+  `penerima` varchar(50) DEFAULT NULL,
+  `tanggal` varchar(100) DEFAULT NULL,
+  `tipe` varchar(15) DEFAULT NULL,
+  `tindakan` text DEFAULT NULL,
+  `status` varchar(15) DEFAULT NULL,
+  `feedback` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `dt_keluhan`
+--
+
+INSERT INTO `dt_keluhan` (`id`, `nama`, `keluhan`, `fakultas`, `penerima`, `tanggal`, `tipe`, `tindakan`, `status`, `feedback`) VALUES
+(1, 'Yasril Rais', 'Air di asrama kotor, tolong dibersihkan. Terimakasih', 'FTE', 'BAGIAN ASRAMA', '27-07-2021', 'Keluhan', 'Baik akan segera dicek dan dibersihkan. Terimakasih', 'Closed', 'Baik. Terimakasih responnya');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tb_user`
+--
+
+CREATE TABLE `tb_user` (
+  `user_id` int(11) NOT NULL,
+  `user_nama` varchar(125) NOT NULL,
+  `user_nim` varchar(11) NOT NULL,
+  `user_email` varchar(125) NOT NULL,
+  `user_password` varchar(125) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tb_user`
+--
+
+INSERT INTO `tb_user` (`user_id`, `user_nama`, `user_nim`, `user_email`, `user_password`) VALUES
+(9, 'Fajar', '1103178179', 'fajar', '24bc50d85ad8fa9cda686145cf1f8aca'),
+(14, 'Yasril Rais', '1103174179', 'yasrilrais', '0997c3244d0a90159660f56f8808e6ac');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `unit`
+--
+
+CREATE TABLE `unit` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(150) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `username` varchar(100) DEFAULT NULL,
+  `password` text DEFAULT NULL,
+  `level` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `password`, `level`) VALUES
+(17, 'yasril', '$2b$12$K8IegaAmeC0WKs228DnFjuX2vKSH90wwjcP6HuMOBqCaC9yd0zHQa', 'Admin'),
+(18, 'fajar', '$2b$12$raPnx9kHaSO63IazNS4CR.DhezLAp3ld90a5hOouV5k0zawJEAFla', 'Admin'),
+(19, 'asrama', '$2b$12$1FjplQ078FW4Ema7WsLn5ONMfKlIcjFuj/VTiqSwJ7L4WzZcsClRm', 'Unit'),
+(22, 'sisfo', '$2b$12$qoWpiEEzgFSLw/ClV7U52uLBYy2iLRHKxd6n6wy7GVmu8OEZ.Gkji', 'Unit');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indeks untuk tabel `dt_keluhan`
+--
+ALTER TABLE `dt_keluhan`
+  ADD PRIMARY KEY (`id`) USING BTREE;
+
+--
+-- Indeks untuk tabel `tb_user`
+--
+ALTER TABLE `tb_user`
+  ADD PRIMARY KEY (`user_id`);
+
+--
+-- Indeks untuk tabel `unit`
+--
+ALTER TABLE `unit`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT untuk tabel yang dibuang
+--
+
+--
+-- AUTO_INCREMENT untuk tabel `dt_keluhan`
+--
+ALTER TABLE `dt_keluhan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `tb_user`
+--
+ALTER TABLE `tb_user`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT untuk tabel `unit`
+--
+ALTER TABLE `unit`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
